@@ -1,5 +1,4 @@
 <script>
-import { layoutMethods } from "@/state/helpers";
 import { menuItems } from "./horizontal-menu";
 
 export default {
@@ -46,7 +45,6 @@ export default {
     }
   },
   methods: {
-    ...layoutMethods,
 
     /**
      * Menu clicked show the submenu
@@ -72,18 +70,6 @@ export default {
     hasItems(item) {
       return item.subItems !== undefined ? item.subItems.length > 0 : false;
     },
-    change_layout(layout) {
-      return this.changeLayoutType({ layoutType: layout });
-    },
-    topbarLight() {
-      document.body.setAttribute("data-topbar", "light");
-      document.body.removeAttribute("data-layout-size", "boxed");
-    },
-    boxedWidth() {
-      document.body.setAttribute("data-layout-size", "boxed");
-      document.body.removeAttribute("data-topbar", "light");
-      document.body.setAttribute("data-topbar", "dark");
-    }
   }
 };
 </script>
@@ -102,7 +88,7 @@ export default {
                 class="nav-link dropdown-toggle arrow-none"
               >
                 <i :class="`${item.icon} mr-2`"></i>
-                {{$t(item.label)}}
+                {{item.label}}
               </router-link>
 
               <a
@@ -114,7 +100,7 @@ export default {
                 role="button"
               >
                 <i :class="`${item.icon} mr-2`"></i>
-                {{$t(item.label)}}
+                {{item.label}}
                 <div class="arrow-down"></div>
               </a>
               <div
@@ -128,10 +114,10 @@ export default {
                     class="col dropdown-item side-nav-link-ref"
                     v-if="!hasItems(subitem)"
                     :to="subitem.link"
-                  >{{$t(subitem.label)}}</router-link>
+                  >{{subitem.label}}</router-link>
                   <div class="dropdown" v-if="hasItems(subitem)" :key="subitem.id">
                     <a class="dropdown-item" href="javascript: void(0);" @click="onMenuClick">
-                      {{ $t(subitem.label) }}
+                      {{ subitem.label }}
                       <div class="arrow-down"></div>
                     </a>
                     <div class="dropdown-menu">
@@ -140,29 +126,10 @@ export default {
                         :key="index"
                         :to="subSubitem.link"
                         class="dropdown-item side-nav-link-ref"
-                      >{{ $t(subSubitem.label) }}</router-link>
+                      >{{ subSubitem.label }}</router-link>
                     </div>
                   </div>
                 </template>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle arrow-none"
-                id="topnav-layout"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                @click="onMenuClick"
-              >
-                <i class="ri-layout-3-line mr-2"></i>{{ $t('menuitems.layouts.text') }}
-                <div class="arrow-down"></div>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="topnav-layout">
-                <a @click="change_layout('vertical')" class="dropdown-item">{{ $t('menuitems.layouts.list.vertical') }}</a>
-                <a @click="topbarLight()" class="dropdown-item">{{ $t('menuitems.layouts.list.lighttopbar') }}</a>
-                <a @click="boxedWidth()" class="dropdown-item">{{ $t('menuitems.layouts.list.boxed') }}</a>
               </div>
             </li>
           </ul>

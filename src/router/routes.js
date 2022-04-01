@@ -74,10 +74,67 @@ export default [
     {
         path: '/',
         name: 'home',
-        meta: {
-            authRequired: true,
-        },
+        meta: { authRequired: true },
         component: () => import('../views/pages/dashboard/index')
     },
-   
+    {
+        path: '/project/list',
+        name: 'Project-list',
+        meta: { authRequired: true },
+        component: () => import('../views/pages/project/projectList')
+    },
+    {
+        path: '/project/calendar',
+        name: 'Project-calendar',
+        meta: { authRequired: true },
+        component: () => import('../views/pages/project/projectCalendar')
+    },
+    {
+        path: '/project/create',
+        name: 'Project-create',
+        meta: { authRequired: true },
+        component: () => import('../views/pages/project/projectCreate')
+    },
+    {
+        path: '/reviewer/all',
+        name: 'Reviewer-all',
+        meta: { authRequired: true },
+        component: () => import('../views/pages/reviewer/reviewerAll')
+    },
+    {
+        path: '/reviewer/facebook',
+        name: 'Reviewer-facebook',
+        meta: { authRequired: true },
+        component: () => import('../views/pages/reviewer/reviewerFacebook')
+    },
+    {
+        path: '/reviewer/instagram',
+        name: 'Reviewer-instagram',
+        meta: { authRequired: true },
+        component: () => import('../views/pages/reviewer/reviewerInstagram')
+    },
+    {
+        path: '/reviewer/naver',
+        name: 'Reviewer-naver',
+        meta: { authRequired: true },
+        component: () => import('../views/pages/reviewer/reviewerNaver')
+    },
+    {
+        path: '/reviewer/youtube',
+        name: 'Reviewer-youtube',
+        meta: { authRequired: true },
+        component: () => import('../views/pages/reviewer/reviewerYoutube')
+    },
+    {
+        path: '/search/instagram',
+        name: 'Search-Instagram',
+        meta: { authRequired: true },
+        component: () => import('../views/pages/search/searchInstagram')
+    },
+    {
+        path: '/search/naver',
+        name: 'Search-Naver',
+        meta: { authRequired: true },
+        component: () => import('../views/pages/search/searchNaver')
+    },
 ]
