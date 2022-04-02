@@ -1,12 +1,17 @@
 <script>
 import Layout from "../../layouts/main";
 import PageHeader from "@/components/page-header";
+import projectSearchbar from '../../../components/project/projectSearchbar.vue';
 
 export default {
   page: {
     meta: [{ name: "project list" }]
   },
-  components: { Layout, PageHeader },
+  components: { 
+    Layout, 
+    PageHeader,
+    projectSearchbar
+  },
   data() {
     return {
       title: "프로젝트 목록",
@@ -28,5 +33,6 @@ export default {
 <template>
   <Layout>
     <PageHeader :title="title" :items="items" />
+      <projectSearchbar/>
   </Layout>
 </template>
