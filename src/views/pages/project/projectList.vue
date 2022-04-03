@@ -2,6 +2,8 @@
 import Layout from "../../layouts/main";
 import PageHeader from "@/components/page-header";
 import projectSearchbar from '../../../components/project/projectSearchbar.vue';
+import projectDataList from '../../../components/project/projectDataList.vue';
+
 
 export default {
   page: {
@@ -10,7 +12,8 @@ export default {
   components: { 
     Layout, 
     PageHeader,
-    projectSearchbar
+    projectSearchbar,
+    projectDataList
   },
   data() {
     return {
@@ -34,5 +37,6 @@ export default {
   <Layout>
     <PageHeader :title="title" :items="items" />
       <projectSearchbar/>
+      <projectDataList/>
   </Layout>
 </template>

@@ -1,12 +1,18 @@
 <script>
 import Layout from "../../layouts/main";
 import PageHeader from "@/components/page-header";
+import projectForm from '../../../components/project/projectForm.vue';
+
 
 export default {
   page: {
     meta: [{ name: "project create" }]
   },
-  components: { Layout, PageHeader },
+  components: { 
+    Layout,
+    PageHeader,
+    projectForm
+  },
   data() {
     return {
       title: "프로젝트 생성",
@@ -28,5 +34,6 @@ export default {
 <template>
   <Layout>
     <PageHeader :title="title" :items="items" />
+    <projectForm/>
   </Layout>
 </template>
