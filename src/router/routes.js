@@ -77,6 +77,10 @@ export default [
         meta: { authRequired: true },
         component: () => import('../views/pages/dashboard/index')
     },
+
+    /**
+     * Project
+     */
     {
         path: '/project/list',
         name: 'Project-list',
@@ -95,6 +99,17 @@ export default [
         meta: { authRequired: true },
         component: () => import('../views/pages/project/projectCreate')
     },
+    {
+        path: '/signupForm',
+        name: 'signupForm',
+        meta: { authRequired: false },
+        component: () => import('../views/pages/project/signupForm'),
+        props: true,
+    },
+
+    /**
+     * Reviewer
+     */
     {
         path: '/reviewer/all',
         name: 'Reviewer-all',
@@ -125,6 +140,10 @@ export default [
         meta: { authRequired: true },
         component: () => import('../views/pages/reviewer/reviewerYoutube')
     },
+
+    /**
+     * Search
+     */
     {
         path: '/search/instagram',
         name: 'Search-Instagram',
@@ -137,4 +156,5 @@ export default [
         meta: { authRequired: true },
         component: () => import('../views/pages/search/searchNaver')
     },
+
 ]

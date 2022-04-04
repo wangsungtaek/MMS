@@ -38,6 +38,12 @@ export default {
     document.body.setAttribute("data-layout-mode", "fluid");
     document.body.removeAttribute("data-layout-size");
   },
+  props: {
+    headerEnable: {
+      type: Boolean,
+      default: true
+    }
+  }
 };
 </script>
 
@@ -71,7 +77,7 @@ export default {
       </div>
 
       
-      <div class="d-flex">
+      <div class="d-flex" v-if="headerEnable">
 
         <!-- 풀 스크린 -->
         <div class="dropdown d-none d-lg-inline-block ml-1">

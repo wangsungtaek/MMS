@@ -30,23 +30,36 @@
                 <i class="mdi mdi-download ml-2"></i>
               </button>
             </template>
-            <template v-slot:cell(action)>
-              <a
-                href="javascript:void(0);"
-                class="mr-3 text-primary"
+            <template v-slot:cell(action)="row">
+              <div class="row justify-content-end">
+              <b-button
+                class="mr-1"
+                variant="primary"
                 v-b-tooltip.hover
-                title="Edit"
+                title="수정"
+                size="sm"
               >
-                <i class="mdi mdi-pencil font-size-18"></i>
-              </a>
-              <a
-                href="javascript:void(0);"
-                class="text-danger"
+                <i class="mdi mdi-pencil font-size-15"></i>
+              </b-button>
+              <b-button
+                class="mr-1"  
+                variant="danger"
                 v-b-tooltip.hover
-                title="Delete"
+                title="삭제"
+                size="sm"
               >
-                <i class="mdi mdi-trash-can font-size-18"></i>
-              </a>
+                <i class="mdi mdi-trash-can font-size-15"></i>
+              </b-button>
+              <b-button
+                variant="secondary"
+                v-b-tooltip.hover
+                title="신청서"
+                size="sm"
+                @click="moveSignupForm(row)"
+              >
+                <i class="mdi mdi-file-document font-size-15"></i>
+              </b-button>
+              </div>
             </template>
           </b-table>
         </div>
@@ -111,5 +124,14 @@ export default {
       return this.projectList.length;
     }
   },
+  methods: {
+    moveSignupForm(row) {
+      console.log(row.item);
+      this.$router.push({
+        name: 'signupForm',
+        params: row.item
+      })
+    }
+  }
 };
 </script>

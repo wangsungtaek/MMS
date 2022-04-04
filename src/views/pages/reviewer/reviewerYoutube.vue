@@ -16,7 +16,7 @@ export default {
           href: "/"
         },
         {
-          text: "유뷰트",
+          text: "유튜브",
           active: true
         }
       ]
