@@ -1,43 +1,38 @@
+<template>
+  <Layout>
+    <PageHeader :title="title" :items="items" />
+    <div class="row">
+      <div class="col-xl-12">
+        <projectState />
+        <reviewerState />
+      </div>
+    </div>
+  </Layout>
+</template>
+
 <script>
 import Layout from "../../layouts/main";
 import PageHeader from "@/components/page-header";
 
-import Stat from "./widget";
-import RevenueAnalytics from "./revenue";
-import SalesAnalytics from "./sales-analytics";
-import EarningReport from "./earning";
-import Sources from "./sources";
-import RecentActivity from "./recent-activity";
-import RevenueLocation from "./revenue-location";
-import Chat from "./chat";
-import Transaction from './transaction';
+import projectState from '@/components/dashboard/projectState.vue';
+import reviewerState from '@/components/dashboard/reviewerState.vue';
 
-/**
- * Dashboard component
- */
 export default {
   components: {
     Layout,
     PageHeader,
-    Stat,
-    RevenueAnalytics,
-    SalesAnalytics,
-    EarningReport,
-    Sources,
-    RecentActivity,
-    RevenueLocation,
-    Chat,
-    Transaction
+    projectState,
+    reviewerState
   },
   data() {
     return {
-      title: "Dashboard",
+      title: "대시보드",
       items: [
         {
           text: "MMS"
         },
         {
-          text: "Dashboard",
+          text: "대시보드",
           active: true
         }
       ]
@@ -45,38 +40,3 @@ export default {
   }
 };
 </script>
-
-<template>
-  <Layout>
-    <PageHeader :title="title" :items="items" />
-    <div class="row">
-      <div class="col-xl-8">
-        <Stat />
-        <RevenueAnalytics />
-      </div>
-      <div class="col-xl-4">
-        <SalesAnalytics />
-        <EarningReport />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <Sources />
-      </div>
-      <div class="col-lg-4">
-        <RecentActivity />
-      </div>
-      <div class="col-lg-4">
-        <RevenueLocation />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <Chat />
-      </div>
-      <div class="col-lg-8">
-        <Transaction />
-      </div>
-    </div>
-  </Layout>
-</template>

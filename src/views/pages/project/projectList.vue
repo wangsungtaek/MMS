@@ -21,7 +21,7 @@ export default {
       items: [
         {
           text: "프로젝트",
-          href: "/"
+          href: "/project/list"
         },
         {
           text: "프로젝트 목록",

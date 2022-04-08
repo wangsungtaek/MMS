@@ -1,28 +1,22 @@
 <script>
 import Layout from "../../layouts/main";
 import PageHeader from "@/components/page-header";
-import projectForm from '../../../components/project/projectForm.vue';
-
 
 export default {
   page: {
-    meta: [{ name: "project create" }]
+    meta: [{ name: "project calendar" }]
   },
-  components: { 
-    Layout,
-    PageHeader,
-    projectForm
-  },
+  components: { Layout, PageHeader },
   data() {
     return {
-      title: "프로젝트 생성",
+      title: "프로젝트 캘린더",
       items: [
         {
           text: "프로젝트",
-          href: "/project/list"
+          href: "/"
         },
         {
-          text: "프로젝트 생성",
+          text: "프로젝트 캘린더",
           active: true
         }
       ]
@@ -34,6 +28,5 @@ export default {
 <template>
   <Layout>
     <PageHeader :title="title" :items="items" />
-    <projectForm/>
   </Layout>
 </template>
