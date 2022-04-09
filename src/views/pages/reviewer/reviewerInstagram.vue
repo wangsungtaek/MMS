@@ -36,7 +36,7 @@ export default {
       items: [
         {
           text: "리뷰어",
-          href: "/"
+          href: "/reviewer/all"
         },
         {
           text: "인스타그램",

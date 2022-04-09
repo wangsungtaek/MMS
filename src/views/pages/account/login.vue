@@ -80,7 +80,7 @@ export default {
 <template>
   <div>
     <div class="home-btn d-none d-sm-block">
-      <a href="/">
+      <a href="/login">
         <i class="mdi mdi-home-variant h2 text-white"></i>
       </a>
     </div>
@@ -100,8 +100,8 @@ export default {
                           </a>
                         </div>
 
-                        <h4 class="font-size-18 mt-4">Welcome Back !</h4>
-                        <p class="text-muted">Sign in to continue to Nazox.</p>
+                        <h4 class="font-size-18 mt-4">로그인</h4>
+                        <p class="text-muted">MMS로 이동하려면 로그인하세요.</p>
                       </div>
 
                       <b-alert
@@ -116,7 +116,7 @@ export default {
                         <form class="form-horizontal" @submit.prevent="tryToLogIn">
                           <div class="form-group auth-form-group-custom mb-4">
                             <i class="ri-mail-line auti-custom-input-icon"></i>
-                            <label for="email">Email</label>
+                            <label for="email">아이디</label>
                             <input
                               type="email"
                               v-model="email"
@@ -133,7 +133,7 @@ export default {
 
                           <div class="form-group auth-form-group-custom mb-4">
                             <i class="ri-lock-2-line auti-custom-input-icon"></i>
-                            <label for="userpassword">Password</label>
+                            <label for="userpassword">비밀번호</label>
                             <input
                               v-model="password"
                               type="password"
@@ -148,7 +148,7 @@ export default {
                             >Password is required.</div>
                           </div>
 
-                          <div class="custom-control custom-checkbox">
+                          <!-- <div class="custom-control custom-checkbox">
                             <input
                               type="checkbox"
                               class="custom-control-input"
@@ -158,35 +158,34 @@ export default {
                               class="custom-control-label"
                               for="customControlInline"
                             >Remember me</label>
-                          </div>
+                          </div> -->
 
                           <div class="mt-4 text-center">
                             <button
                               class="btn btn-primary w-md waves-effect waves-light"
                               type="submit"
-                            >Log In</button>
+                            >로그인</button>
                           </div>
 
-                          <div class="mt-4 text-center">
+                          <!-- <div class="mt-4 text-center">
                             <router-link tag="a" to="/forgot-password" class="text-muted">
                               <i class="mdi mdi-lock mr-1"></i> Forgot your password?
                             </router-link>
-                          </div>
+                          </div> -->
                         </form>
                       </div>
 
                       <div class="mt-5 text-center">
-                        <p>
+                        <!-- <p>
                           Don't have an account ?
                           <router-link
                             tag="a"
                             to="/register"
                             class="font-weight-medium text-primary"
-                          >Register</router-link>
-                        </p>
+                          >회원가입</router-link>
+                        </p> -->
                         <p>
-                          © 2020 Nazox. Crafted with
-                          <i class="mdi mdi-heart text-danger"></i> by Themesdesign
+                          © 2022 MMS.
                         </p>
                       </div>
                     </div>

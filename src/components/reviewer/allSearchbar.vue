@@ -5,25 +5,11 @@
         <div class="card-body align-middle">
           <div class="row">
 
-            <!-- 성별 -->
-            <div class="col-lg-1 my-auto text-right">
-              <label for="" class="m-0">성별</label>
+            <div class="col-lg-7">
             </div>
-            <div class="col-lg-2 genderBox">
-              <b-form-select v-model="genderData" :options="gender"></b-form-select>
-            </div>
-
-            <!-- 연령대 -->
-            <div class="col-lg-1 my-auto text-right">
-              <label for="" class="m-0">연령대</label>
-            </div>
-            <div class="col-lg-2 ageBox">
-              <b-form-select v-model="age" :options="ageList"></b-form-select>
-            </div>
-
 
             <!-- 검색 조건 -->
-            <div class="col-lg-2">
+            <div class="col-lg-1">
               <b-form-select v-model="selected" :options="options"></b-form-select>
             </div>
             <div class="col-lg-2 searchBox">
@@ -47,18 +33,10 @@
 export default {
   data() {
     return {
-      // 성별
-      genderData: '',
-      gender: [ '남자', '여자' ],
-
-      // 나이
-      age: "",
-      ageList: [ '10 ~ 19', '20 ~ 29', '30 ~ 39', '40 ~ 49', '50 ~ 59' ],
-
       // 검색조건
-      selected: '아이디',
+      selected: '전체',
       searchText: '',
-      options: [ '아이디', '닉네임', '메모'],
+      options: [ '전체', '네이버', '인스타'],
 
     };
   },

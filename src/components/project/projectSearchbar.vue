@@ -13,11 +13,11 @@
               <date-picker v-model="daterange" range append-to-body></date-picker>
             </div>
             
-            <div class="col-lg-3">
+            <div class="col-lg-2">
             </div>
 
             <!-- 검색 조건 -->
-            <div class="col-lg-1">
+            <div class="col-lg-2">
               <b-form-select v-model="selected" :options="options"></b-form-select>
             </div>
             <div class="col-lg-2">
@@ -48,10 +48,10 @@ export default {
     return {
       daterange: "",
       value: "",
-      selected: "",
+      selected: "프로젝트명",
       searchText: "",
       options: [
-        "제목",
+        "프로젝트명",
         "번호",
         "태그",
       ],

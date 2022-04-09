@@ -47,16 +47,16 @@ export const menuItems = [
                 label: '리뷰어 - 인스타그램',
                 link: '/reviewer/instagram'
             },
-            {
-                id: 10,
-                label: '리뷰어 - 페이스북',
-                link: '/reviewer/facebook'
-            },
-            {
-                id: 11,
-                label: '리뷰어 - 유튜브',
-                link: '/reviewer/youtube'
-            }
+            // {
+            //     id: 10,
+            //     label: '리뷰어 - 페이스북',
+            //     link: '/reviewer/facebook'
+            // },
+            // {
+            //     id: 11,
+            //     label: '리뷰어 - 유튜브',
+            //     link: '/reviewer/youtube'
+            // }
         ]
     },
     {
