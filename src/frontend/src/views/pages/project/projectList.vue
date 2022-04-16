@@ -4,7 +4,6 @@ import PageHeader from "@/components/page-header";
 import projectSearchbar from '../../../components/project/projectSearchbar.vue';
 import projectDataList from '../../../components/project/projectDataList.vue';
 
-
 export default {
   page: {
     meta: [{ name: "project list" }]
@@ -29,6 +28,21 @@ export default {
         }
       ]
     };
+  },
+  created() {
+    this.getSampleData();
+  },
+  methods: {
+    async getSampleData() {
+      const response = await this.$api(
+        "/api/sample/findSampleInfo.do",
+        "get",
+      );
+
+      response.forEach((element) => {
+        console.log(element);
+      })
+    }
   }
 };
 </script>
