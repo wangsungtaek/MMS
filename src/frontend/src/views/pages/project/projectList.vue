@@ -30,7 +30,9 @@ export default {
     };
   },
   created() {
-    this.getSampleData();
+    // this.getSampleData();
+    console.log(this.$store);
+    this.$store.dispatch('FETCH_PROJECT');
   },
   methods: {
     async getSampleData() {
