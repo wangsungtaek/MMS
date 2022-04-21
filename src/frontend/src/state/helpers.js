@@ -17,6 +17,12 @@ export const layoutComputed = {
   })
 }
 
+export const projectComputed = {
+  ...mapState('project', {
+    projects: (state) => state.projects
+  })
+}
+
 export const authMethods = mapActions('auth', ['logIn', 'logOut', 'register', 'resetPassword'])
 
 export const layoutMethods = mapActions('layout', ['changeLayoutType', 'changeLayoutWidth', 'changeLeftSidebarType', 'changeTopbar', 'changeLoaderValue'])
@@ -24,3 +30,5 @@ export const layoutMethods = mapActions('layout', ['changeLayoutType', 'changeLa
 export const authFackMethods = mapActions('authfack', ['login', 'registeruser', 'logout'])
 
 export const notificationMethods = mapActions('notification', ['success', 'error', 'clear'])
+
+export const projectMethods = mapActions('project', ['FETCH_PROJECT'])
