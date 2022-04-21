@@ -32,7 +32,8 @@ export default {
   created() {
     // this.getSampleData();
     console.log(this.$store);
-    this.$store.dispatch('FETCH_PROJECT');
+    this.$store.commit('SET_PROJECTS', ['1', '3']);
+    // this.$store.dispatch('FETCH_PROJECT');
   },
   methods: {
     async getSampleData() {

@@ -1,5 +1,5 @@
 export const state = {
-  projects: []
+  projects: ['1', '2']
 };
 
 export const getters = {
