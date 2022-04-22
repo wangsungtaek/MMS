@@ -16,53 +16,34 @@
             :sort-by.sync="sortBy"
             :sort-desc.sync="sortDesc"
           >
-            <template v-slot:cell(state)="row">
-              <div
-                class="badge font-size-12 text-center"
+            <!-- row number -->
+            <template #cell(NO)="data">
+              {{ data.index + 1 }}
+            </template>
+
+            <!-- 상태 값 -->
+            <template v-slot:cell(STATE)="row">
+              <div class="badge font-size-12 text-center"
                 :class="{'badge-soft-danger': `${row.value}` === '시작전',
-                    'badge-soft-success': `${row.value}` === '완료',
-                    'badge-soft-warning': `${row.value}` === '진행중'}"
+                         'badge-soft-success': `${row.value}` === '완료',
+                         'badge-soft-warning': `${row.value}` === '진행중'}"
               >{{ row.value }}</div>
             </template>
-            <template v-slot:cell(invoice)>
-              <button class="btn btn-light btn-rounded">
-                Invoice
-                <i class="mdi mdi-download ml-2"></i>
-              </button>
-            </template>
-            <template v-slot:cell(action)="row">
+
+            <!-- 버튼 그룹 -->
+            <template v-slot:cell(ACTION)="row">
               <div class="row justify-content-end">
-              <b-button
-                class="mr-1"
-                variant="primary"
-                v-b-tooltip.hover
-                title="수정"
-                size="sm"
-              >
-                <i class="mdi mdi-pencil font-size-15"></i>
-              </b-button>
-              <b-button
-                class="mr-1"  
-                variant="danger"
-                v-b-tooltip.hover
-                title="삭제"
-                size="sm"
-              >
-                <i class="mdi mdi-trash-can font-size-15"></i>
-              </b-button>
-              <b-button
-                variant="secondary"
-                v-b-tooltip.hover
-                title="신청서"
-                size="sm"
-                @click="moveSignupForm(row)"
-              >
-                <i class="mdi mdi-file-document font-size-15"></i>
-              </b-button>
+                <comButton label="수정" />
+                <comButton label="삭제" color="danger" icon="mdi-trash-can" />
+                <comButton label="신청서" color="secondary" icon="mdi-file-document" @buttonON="moveSignupForm(row)" />
               </div>
             </template>
-          </b-table>
+
+          </b-table>          
         </div>
+        <!-- end of Table -->
+
+        <!-- 페이지 -->
         <div class="row">
           <div class="col">
             <div class="dataTables_paginate paging_simple_numbers float-right">
@@ -73,6 +54,7 @@
             </div>
           </div>
         </div>
+        
       </div>
     </div>
   </div>
@@ -81,9 +63,11 @@
 </template>
 <script>
 import { projectComputed, projectMethods } from "@/state/helpers";
+import comButton from '../common/comButton.vue';
 
 export default {
   components: {
+    comButton
   },
   created() {
     this.FETCH_PROJECT();
@@ -92,7 +76,7 @@ export default {
     return {
       // 프로젝트 그리드 해더
       projectHeader: [
-        { key: "no", label: "순번", },
+        { key: "NO", label: "순번", },
         { key: "PROJECT_NM", label: "프로젝트명" },
         { key: "START_DT", sortable: true, label: "시작 날짜" },
         { key: "END_DT", sortable: true, label: "종료 날짜" },

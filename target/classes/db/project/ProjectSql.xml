@@ -1,0 +1,18 @@
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="project">
+    <parameterMap id="parameterMap" type="java.util.HashMap" />
+    <resultMap id="resultMap" type="java.util.HashMap" />
+
+    <select id="findAllProject" resultMap="resultMap" parameterMap="parameterMap">
+        SELECT *
+        FROM PROJECT
+        WHERE project_id IN (
+            SELECT project_id
+            FROM USER_PROJECT
+            WHERE user_id = 1
+        )
+        AND project_nm LIKE '%' || '${searchText}' || '%'
+    </select>
+
+</mapper>

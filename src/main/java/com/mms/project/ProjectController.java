@@ -1,10 +1,10 @@
 package com.mms.project;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,14 +13,20 @@ import java.util.Map;
 public class ProjectController {
 
     @Autowired
-    private ProjectMapper projectMapper;
-
+    ProjectDao projectDao;
     /*
      * 프로젝트 리스트
      */
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<Map> findProject() throws Exception {
+    public List<Map<String, Object>> findProject(
+            @RequestParam( value = "searchText",required = false) String param
+    ) throws Exception {
 
-        return projectMapper.findAll();
+        System.out.println("param = " + param);
+        Map<String, Object> paramMap = new HashMap<>();
+        if(param != null) {
+            paramMap.put("searchText", param);
+        }
+        return projectDao.findAllProject(paramMap);
     }
 }

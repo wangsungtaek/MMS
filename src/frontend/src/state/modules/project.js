@@ -17,8 +17,9 @@ export const mutations = {
 };
 
 export const actions = {
-  async FETCH_PROJECT({ commit }) {
-    const response = await axios.get('/api/project', 'get')
+  async FETCH_PROJECT({ commit }, param) {
+    console.log(param);
+    const response = await axios.get('/api/project', { params: param})
     commit("SET_PROJECTS", response.data);
   }
 };
