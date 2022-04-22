@@ -3,7 +3,6 @@ import Layout from "../../layouts/main";
 import PageHeader from "@/components/page-header";
 import projectSearchbar from '../../../components/project/projectSearchbar.vue';
 import projectDataList from '../../../components/project/projectDataList.vue';
-import { projectComputed, projectMethods } from "@/state/helpers";
 
 export default {
   page: {
@@ -30,29 +29,6 @@ export default {
       ],
     };
   },
-  computed: {
-    ...projectComputed
-  },
-  created() {
-    // this.getSampleData();
-    this.FETCH_PROJECT();
-    // this.$store.commit('SET_PROJECTS', ['1', '3']);
-    // this.$store.dispatch('FETCH_PROJECT');
-  },
-  methods: {
-    ...projectMethods,
-    
-    async getSampleData() {
-      const response = await this.$api(
-        "/api/sample/findSampleInfo.do",
-        "get",
-      );
-
-      response.forEach((element) => {
-        console.log(element);
-      })
-    },
-  }
 };
 </script>
 

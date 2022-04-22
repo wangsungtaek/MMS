@@ -8,7 +8,7 @@
         <div class="table-responsive">
           <b-table
             class="table-centered"
-            :items="projectList"
+            :items="projects"
             :fields="projectHeader"
             responsive="sm"
             :per-page="perPage"
@@ -80,36 +80,26 @@
 
 </template>
 <script>
+import { projectComputed, projectMethods } from "@/state/helpers";
+
 export default {
   components: {
   },
+  created() {
+    this.FETCH_PROJECT();
+  },
   data() {
     return {
+      // 프로젝트 그리드 해더
       projectHeader: [
         { key: "no", label: "순번", },
-        { key: "projectName", label: "프로젝트명" },
-        { key: "startDate", sortable: true, label: "시작 날짜" },
-        { key: "endDate", sortable: true, label: "종료 날짜" },
-        { key: "state", sortable: true, label: "상태" },
-        { key: "action", sortable: false, label: "" }
+        { key: "PROJECT_NM", label: "프로젝트명" },
+        { key: "START_DT", sortable: true, label: "시작 날짜" },
+        { key: "END_DT", sortable: true, label: "종료 날짜" },
+        { key: "STATE", sortable: true, label: "상태" },
+        { key: "ACTION", sortable: false, label: "" }
       ],
-      projectList: [
-        { no: "#1", projectName: "마운트뷰 모니터암 신제품 리뷰 인플루언서 모집", startDate: "2022-02-05", endDate: "2022-03-01", state: "진행중", action: "" },
-        { no: "#2", projectName: "마운트뷰 모니터암 신제품 리뷰 인플루언서 모집", startDate: "2022-02-05", endDate: "2022-03-01", state: "시작전", action: "" },
-        { no: "#3", projectName: "마운트뷰 모니터암 신제품 리뷰 인플루언서 모집", startDate: "2022-02-05", endDate: "2022-03-01", state: "완료", action: "" },
-        { no: "#4", projectName: "마운트뷰 모니터암 신제품 리뷰 인플루언서 모집", startDate: "2022-02-05", endDate: "2022-03-01", state: "진행중", action: "" },
-        { no: "#5", projectName: "마운트뷰 모니터암 신제품 리뷰 인플루언서 모집", startDate: "2022-02-05", endDate: "2022-03-01", state: "완료", action: "" },
-        { no: "#6", projectName: "마운트뷰 모니터암 신제품 리뷰 인플루언서 모집", startDate: "2022-02-05", endDate: "2022-03-01", state: "완료", action: "" },
-        { no: "#7", projectName: "마운트뷰 모니터암 신제품 리뷰 인플루언서 모집", startDate: "2022-02-05", endDate: "2022-03-01", state: "완료", action: "" },
-        { no: "#8", projectName: "마운트뷰 모니터암 신제품 리뷰 인플루언서 모집", startDate: "2022-02-05", endDate: "2022-03-01", state: "완료", action: "" },
-        { no: "#9", projectName: "마운트뷰 모니터암 신제품 리뷰 인플루언서 모집", startDate: "2022-02-05", endDate: "2022-03-01", state: "완료", action: "" },
-        { no: "#10", projectName: "마운트뷰 모니터암 신제품 리뷰 인플루언서 모집", startDate: "2022-02-05", endDate: "2022-03-01", state: "완료", action: "" },
-        { no: "#11", projectName: "마운트뷰 모니터암 신제품 리뷰 인플루언서 모집", startDate: "2022-02-05", endDate: "2022-03-01", state: "완료", action: "" },
-        { no: "#12", projectName: "마운트뷰 모니터암 신제품 리뷰 인플루언서 모집", startDate: "2022-02-05", endDate: "2022-03-01", state: "완료", action: "" },
-        { no: "#13", projectName: "마운트뷰 모니터암 신제품 리뷰 인플루언서 모집", startDate: "2022-02-05", endDate: "2022-03-01", state: "완료", action: "" },
-        { no: "#14", projectName: "마운트뷰 모니터암 신제품 리뷰 인플루언서 모집", startDate: "2022-02-05", endDate: "2022-03-01", state: "완료", action: "" },
-      ],
-      totalRows: 1,
+      
       currentPage: 1,
       perPage: 10,
       sortBy: "no",
@@ -117,14 +107,13 @@ export default {
     };
   },
   computed: {
-    /**
-     * Total no. of records
-     */
+    ...projectComputed,
     rows() {
-      return this.projectList.length;
+      return this.projects.length;
     }
   },
   methods: {
+    ...projectMethods,
     moveSignupForm(row) {
       console.log(row.item);
       this.$router.push({

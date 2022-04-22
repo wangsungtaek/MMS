@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const state = {
-  projects: ['1', '2']
+  projects: []
 };
 
 export const getters = {
@@ -18,8 +18,7 @@ export const mutations = {
 
 export const actions = {
   async FETCH_PROJECT({ commit }) {
-    const response = await axios.get('/api/sample/findSampleInfo.do', 'get')
-    console.log(response);
-    commit("SET_PROJECTS", response);
+    const response = await axios.get('/api/project', 'get')
+    commit("SET_PROJECTS", response.data);
   }
 };
