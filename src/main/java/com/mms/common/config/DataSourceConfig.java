@@ -21,10 +21,6 @@ import java.util.Map;
 
 @Configuration
 @PropertySource("classpath:/application.properties")
-/**
- * DataSourceConfig.java – DB 연동 Config
- * @author jyan
- */
 public class DataSourceConfig {
     @Autowired
     ApplicationContext applicationContext;

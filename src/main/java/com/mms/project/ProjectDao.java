@@ -14,6 +14,18 @@ public class ProjectDao extends MmsDao {
      * 프로젝트 리스트 조회
      */
     public List<Map<String, Object>> findAllProject(Map<String, Object> param) throws Exception {
-        return  super.selectListInfo("project.findAllProject", param);
+        return super.selectListInfo("project.findAllProject", param);
+    }
+
+    /**
+     * 프로젝트 생성
+     */
+    public boolean createProject(Map<String, Object> param) throws Exception {
+        int processCount = super.insertInfo("project.createProject", param);
+        boolean isSuccess = false;
+        if(processCount != 0){
+            isSuccess = true;
+        }
+        return isSuccess;
     }
 }

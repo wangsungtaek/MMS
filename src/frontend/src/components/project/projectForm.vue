@@ -9,22 +9,22 @@
             <div class="col-lg-4">
 
               <!-- 프로젝트 ID -->
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-lg-4 my-auto text-right">
                   <label for="projectId" class="m-0">프로젝트 ID</label>
                 </div>
                 <div class="col-lg-7">
-                  <b-form-input v-model="projectId" disabled id="projectId" placeholder="PROJECT ID"></b-form-input>
+                  <b-form-input v-model="projectForm.PROJECT_ID" disabled id="projectId" placeholder="PROJECT ID"></b-form-input>
                 </div>
-              </div>
+              </div> -->
 
               <!-- 프로젝트 명 -->
-              <div class="row mt-4">
+              <div class="row">
                 <div class="col-lg-4 my-auto text-right">
                   <label for="projectName" class="m-0">프로젝트 명</label>
                 </div>
                 <div class="col-lg-7">
-                  <b-form-input v-model="projectName" id="projectName" required></b-form-input>
+                  <b-form-input v-model="projectForm.PROJECT_NM" id="projectName" class="" required></b-form-input>
                 </div>
               </div>
 
@@ -34,7 +34,7 @@
                   <label for="projectStartDate" class="m-0">시작일</label>
                 </div>
                 <div class="col-lg-7">
-                  <b-form-input v-model="projectStartDate" type="date" id="projectStartDate"></b-form-input>
+                  <b-form-input v-model="projectForm.START_DT" type="date" id="projectStartDate"></b-form-input>
                 </div>
               </div>
 
@@ -44,7 +44,7 @@
                   <label for="projectEndDate" class="m-0">종료일</label>
                 </div>
                 <div class="col-lg-7">
-                  <b-form-input v-model="projectEndDate" type="date" id="projectEndDate"></b-form-input>
+                  <b-form-input v-model="projectForm.END_DT" type="date" id="projectEndDate"></b-form-input>
                 </div>
               </div>
 
@@ -54,7 +54,7 @@
                   <label for="people" class="m-0">모집인원</label>
                 </div>
                 <div class="col-lg-7">
-                  <b-form-input v-model="people" id="people" type="number" min="1" max="200"></b-form-input>
+                  <b-form-input v-model="projectForm.PERSONNEL" id="people" type="number" min="1" max="200"></b-form-input>
                 </div>
               </div>
 
@@ -65,7 +65,7 @@
                 </div>
                 <div class="col-lg-7">
                   <textarea
-                    v-model="memo"
+                    v-model="projectForm.MEMO"
                     class="form-control"
                     name="textarea"
                     rows="5"
@@ -109,7 +109,7 @@
                   <label for="memo" class="m-0">제품링크</label>
                 </div>
                 <div class="col-lg-10">
-                  <b-form-input v-model="link" id="link"></b-form-input>
+                  <b-form-input v-model="projectForm.LINK" id="link"></b-form-input>
                 </div>
               </div>
 
@@ -120,7 +120,7 @@
                 </div>
                 <div class="col-lg-10">
                   <textarea
-                    v-model="detailInfo"
+                    v-model="projectForm.DETAIL_INFO"
                     class="form-control"
                     name="textarea"
                     rows="10"
@@ -133,7 +133,7 @@
           </div>
           <hr class="mt-4">
           <b-row class="justify-content-end mr-1">
-            <b-button variant="primary" id="searchBtn">
+            <b-button @click="createProject" variant="primary" id="searchBtn">
               프로젝트 생성
             </b-button>
           </b-row>
@@ -144,20 +144,53 @@
 </template>
 
 <script>
+import { projectMethods } from '@/state/helpers'
+import Swal from "sweetalert2";
+
 export default {
   data() {
     return {
-      projectId: "",
-      projectName: "",
-      projectStartDate: "",
-      projectEndDate: "",
-      people: "",
-      memo: "",
-      detailInfo: "",
-      link: "",
+      projectForm: {
+        // PROJECT_ID: '',
+        PROJECT_NM: '',
+        STATE: '',
+        START_DT: '',
+        END_DT: '',
+        PERSONNEL: '',
+        MEMO: '',
+        IMG_PATH: '',
+        LINK: '',
+        DETAIL_INFO: ''
+      }
     }
   },
-  components: {
+  methods: {
+    ...projectMethods,
+
+    // Form 초기화
+    initForm() {
+      this.projectForm.PROJECT_ID = ''
+      this.projectForm.PROJECT_NM = ''
+      this.projectForm.STATE = ''
+      this.projectForm.START_DT = ''
+      this.projectForm.END_DT = ''
+      this.projectForm.PERSONNEL = ''
+      this.projectForm.MEMO = ''
+      this.projectForm.IMG_PATH = ''
+      this.projectForm.LINK = ''
+      this.projectForm.DETAIL_INFO = ''
+    },
+
+    // 프로젝트 등록
+    async createProject() {
+      const result = await this.CREATE_PROJECT(this.projectForm)
+      console.log(result);
+      if(result.data) {
+        Swal.fire("등록완료", "프로젝트가 등록되었습니다.", "success");
+        this.initForm();
+      }
+    }
+
   }
 }
 </script>

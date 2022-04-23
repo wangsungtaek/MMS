@@ -21,5 +21,11 @@ export const actions = {
     console.log(param);
     const response = await axios.get('/api/project', { params: param})
     commit("SET_PROJECTS", response.data);
+  },
+  async CREATE_PROJECT({ commit }, param) {
+    console.log(commit)
+    console.log(param)
+    const response = await axios.post('/api/project', param)
+    return response;
   }
 };

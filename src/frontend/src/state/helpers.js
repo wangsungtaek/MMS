@@ -31,4 +31,4 @@ export const authFackMethods = mapActions('authfack', ['login', 'registeruser', 
 
 export const notificationMethods = mapActions('notification', ['success', 'error', 'clear'])
 
-export const projectMethods = mapActions('project', ['FETCH_PROJECT'])
+export const projectMethods = mapActions('project', ['FETCH_PROJECT', 'CREATE_PROJECT'])
