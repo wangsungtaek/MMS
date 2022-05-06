@@ -18,16 +18,18 @@ export const mutations = {
 
 export const actions = {
   async FETCH_PROJECT({ commit }, param) {
-    console.log(param);
-    const response = await axios.get('/api/project', { params: param})
+    let id = ''
+    if(param) {
+      id = param.PROJECT_ID
+      
+    }
+    const url = `/api/project/${id}`
+    const response = await axios.get(url, { params: param})
     commit("SET_PROJECTS", response.data);
   },
-  CREATE_PROJECT({ commit }, param) {
+  async CREATE_PROJECT({ commit }, param) {
     console.log(commit)
-    return new Promise((resolve) => {
-      const response = axios.post('/api/project', param)
-      resolve.bind(response)
-    })
-    
-  }
+    const response = await axios.post('/api/project', param)
+    return response.data    
+  },
 };

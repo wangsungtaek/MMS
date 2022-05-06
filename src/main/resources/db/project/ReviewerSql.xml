@@ -1,0 +1,47 @@
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="reviewer">
+    <parameterMap id="parameterMap" type="java.util.HashMap" />
+    <resultMap id="resultMap" type="java.util.HashMap" />
+
+    <!-- 블로거 등록 -->
+    <insert id="createBloger" parameterMap="parameterMap">
+        INSERT INTO REVIEWER (
+            REVIEWER_NM
+            ,REVIEWER_DIV
+            ,KAKAO_ID
+            ,AGE
+            ,SIGNUP_PATH
+            ,CATEGORY
+            ,BLOG_NM
+            ,BLOG_LINK
+            ,EMAIL
+            ,IMPORTANT
+            ,TEL_NO
+            ,ADDRESS
+            ,POST_NO
+            ,VISIT
+            ,REMARK
+            ,CREATE_DT
+        ) VALUES (
+            #{name}
+            ,#{division}
+            ,#{kakaoId}
+            ,#{age}
+            ,#{signupPath}
+            ,#{category}
+            ,#{blogNm}
+            ,#{blogLink}
+            ,#{email}
+            ,#{important}
+            ,#{phone}
+            ,#{address}
+            ,#{postNum}
+            ,#{visit}
+            ,#{remark}
+            ,NOW()
+        )
+    </insert>
+
+
+</mapper>

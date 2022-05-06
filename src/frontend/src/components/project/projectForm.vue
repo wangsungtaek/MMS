@@ -184,8 +184,7 @@ export default {
     // 프로젝트 등록
     async createProject() {
       const result = await this.CREATE_PROJECT(this.projectForm)
-      console.log(result);
-      if(result.data) {
+      if(result === true) {
         Swal.fire("등록완료", "프로젝트가 등록되었습니다.", "success");
         this.initForm();
       }

@@ -18,6 +18,11 @@ public class ProjectService {
         return projectDao.findAllProject(param);
     }
 
+    // 프로젝트 상세 조회
+    public List<Map<String, Object>> findProject(Map<String, Object> param) throws Exception{
+        return projectDao.findProject(param);
+    }
+
     // 프로젝트 등록
     public boolean createProject(Map<String, Object> param) throws Exception {
         return projectDao.createProject(param);

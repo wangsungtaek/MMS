@@ -98,6 +98,8 @@ export default {
   },
   methods: {
     ...projectMethods,
+
+    // 신청서 화면으로 이동
     moveSignupForm(row) {
       console.log(row.item);
       this.$router.push({

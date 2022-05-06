@@ -10,16 +10,18 @@ import java.util.Map;
 @Repository("projectDao")
 public class ProjectDao extends MmsDao {
 
-    /**
-     * 프로젝트 리스트 조회
-     */
+
+     // 프로젝트 리스트 조회
     public List<Map<String, Object>> findAllProject(Map<String, Object> param) throws Exception {
         return super.selectListInfo("project.findAllProject", param);
     }
 
-    /**
-     * 프로젝트 생성
-     */
+    // 프로젝트 상세 조회
+    public List<Map<String, Object>> findProject(Map<String, Object> param) throws Exception {
+        return super.selectListInfo("project.findProject", param);
+    }
+
+    // 프로젝트 생성
     public boolean createProject(Map<String, Object> param) throws Exception {
         int processCount = super.insertInfo("project.createProject", param);
         boolean isSuccess = false;

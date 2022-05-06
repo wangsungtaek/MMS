@@ -100,7 +100,7 @@ export default [
         component: () => import('../views/pages/project/projectCreate')
     },
     {
-        path: '/signupForm',
+        path: '/signupForm/:PROJECT_ID',
         name: 'signupForm',
         meta: { authRequired: false },
         component: () => import('../views/pages/project/signupForm'),

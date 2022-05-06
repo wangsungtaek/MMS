@@ -1,6 +1,6 @@
 <template>
   <div id="layout-wrapper">
-    <HorizontalTopbar :type="topbar" :width="layoutWidth" :headerEnable=false />
+    <HorizontalTopbar :headerEnable=false />
     <div class="main-content">
       <div class="page-content">
         <div class="container-fluid">
@@ -17,20 +17,20 @@
 
           <!-- 프로젝트 제목 -->
           <div class="row justify-content-center mt-5">
-            <h3>{{ projectName }}</h3>
+            <h3>{{ this.projects[0] ? this.projects[0].PROJECT_NM : '' }}</h3>
           </div>
 
           <!-- 프로젝트 기간 -->
           <div class="row justify-content-center mt-2">
             <div class="">
-              기간 : {{ startDate }} ~ {{ endDate }}
+              기간 : {{ this.projects[0] ? startDate : '' }} ~ {{ this.projects[0] ? endDate : ''}}
             </div>
           </div>
 
           <hr>
 
           <!-- 상세내용 -->
-          <div class="row justify-content-center my-5">
+          <div class="row justify-content-center my-5" v-if="this.projects[0]">
             <div v-html="changeDetailInfo">
               
             </div>
@@ -95,54 +95,36 @@
 
 <script>
 import HorizontalTopbar from "@/components/horizontal-topbar";
-
-import { layoutComputed } from "@/state/helpers";
+import { projectComputed ,projectMethods } from '@/state/helpers'
 
 
 export default {
   name: 'signupForm',
-  props: {
-    projectName: {
-      type: String,
-      default: "",
-    },
-    startDate: {
-      type: String,
-    },
-    endDate: {
-      type: String,
-    },
-  },
-  data() {
-    return {
-      detaitestlInfo: `*신제품으로 출시된 마운트뷰 모니터암 화이트 에디션을 체험할 수 있는 기회!
-
-*평소 IT/리뷰/인테리어에 관심있는 분들 환영합니다 :)
-
-1) 모집조건 및 모집인원 : IT/리뷰/인테리어에 관심있는 인플루언서 / 인스타그램 팔로워 최소 1만이상 / 50명
-
-2) 진행 미션 : 리뷰형식 or 인테리어로 소구하여 게시물 1회 + 스토리 1회 업로드
-
-3) 업로드 일정 : 3월 말 ~ 4월 초 예정
-
-4) 참고사항 : 가이드 제공 후 원고 컨펌은 따로 없습니다. 요청 기한 안에 업로드 해주시면 됩니다.
-
-5) 제공내역 : 제품 제공(3만원 상당) + 원고료 3만원`
-    }
-  },
+  
   computed: {
-    ...layoutComputed,
+    ...projectComputed,
     changeDetailInfo() {
-      return this.detaitestlInfo.replace(/(?:\r\n|\r|\n)/g, '<br />')
-    }
+      return this.projects[0].DETAIL_INFO.replace(/(?:\r\n|\r|\n)/g, '<br />')
+    },
+    startDate() {
+      return this.projects[0].START_DT.substring(0, 10)
+    },
+    endDate() {
+      return this.projects[0].END_DT.substring(0, 10)
+    },
   },
   components: {
     HorizontalTopbar,
   },
   methods: {
+    ...projectMethods,
     formSubmit() {
       console.log('submit')
     }
+  },
+  created() {
+    this.FETCH_PROJECT(this.$route.params)
+    console.log(this.projects[0])
   }
 }
 </script>

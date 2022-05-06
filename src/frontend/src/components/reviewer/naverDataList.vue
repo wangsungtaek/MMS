@@ -1,11 +1,16 @@
 <template>
+<div>
 <!-- 프로젝트 리스트 -->
 <div class="row">
   <div class="col-lg-12">
     <div class="card">
       <div class="card-body">
-
-        <div class="table-responsive">
+        <div class="text-right">
+          <a href="javascript:void(0);" class="btn btn-success mb-2" @click="openReviewerForm = true">
+            <i class="mdi mdi-plus mr-2"></i> 블로거 등록
+          </a>
+        </div>
+        <div class="table-responsive mt-3">
           <b-table
             class="table-centered"
             :items="projectList"
@@ -78,10 +83,60 @@
   </div>
 </div>
 
+<!-- Modal -->
+<b-modal
+  v-model="openReviewerForm"
+  title="블로거 등록"
+  title-class="text-dark font-18"
+  hide-footer
+>   
+    <b-form ref="form">
+    <!-- 이름 -->
+    <ComInput v-model="bloger.name" title="* 성명" />
+    <!-- 카카오 ID -->
+    <ComInput v-model="bloger.kakaoId" title="카카오 ID" />
+    <!-- 나이 -->
+    <ComInput v-model="bloger.age" title="나이" type="number" />
+    <!-- 블로그 명 -->
+    <ComInput v-model="bloger.blogNm" title="블로그 명" />
+    <!-- 블로그 주소 -->
+    <ComInput v-model="bloger.link" title="블로그 주소" />
+    <!-- 이메일 -->
+    <ComInput v-model="bloger.email" title="이메일" type="email"/>
+    <!-- 전화번호 -->
+    <ComInput v-model="bloger.phone" title="전화번호" />
+    <!-- 주소 -->
+    <ComInput v-model="bloger.address" title="주소" type="textarea"/>
+    <!-- 일방문자수 -->
+    <ComInput v-model="bloger.visit" title="일 방문자 수" type="number" />
+    <!-- 게시물 수  -->
+    <ComInput v-model="bloger.postNum" title="게시물 수" type="number" />
+    <!-- 중요도 -->
+    <ComInput v-model="bloger.important" type="select" :items="importantCombo" />
+    <!-- 카테고리 -->
+    <ComInput v-model="bloger.category" type="select" :items="categoryCombo" />
+    <!-- 비고 -->
+    <ComInput v-model="bloger.remark" title="비고" type="textarea"/>
+    </b-form>
+
+    <!-- Button -->
+    <div class="text-right">
+      <button type="submit" class="btn btn-success" @click="createBloger">블로거 등록</button>
+      <b-button class="ml-1" variant="danger" @click="hideModal">닫기</b-button>
+    </div>
+        
+</b-modal>
+
+</div>
 </template>
 <script>
+import ComInput from '../common/ComInput';
+import Vue from "vue";
+import { reviewerMethods } from '@/state/helpers'
+
 export default {
   components: {
+    ComInput
   },
   data() {
     return {
@@ -110,7 +165,50 @@ export default {
       currentPage: 1,
       perPage: 10,
       sortBy: "no",
-      sortDesc: false,  
+      sortDesc: false,
+
+      // 중요도 콤보
+      importantCombo: [
+        {value: '', text: '* 중요도 선택'},
+        {value: '0', text: '중요도-0'},
+        {value: '1', text: '중요도-1'},
+        {value: '2', text: '중요도-2'},
+        {value: '3', text: '중요도-3'},
+        {value: '4', text: '중요도-4'},
+        {value: '5', text: '중요도-5'},
+      ],
+
+      // 카테고리 콤보
+      categoryCombo: [
+        {value: '', text: '* 카테고리 선택'},
+        {value: 'category0', text: '카테고리-0'},
+        {value: 'category1', text: '카테고리-1'},
+        {value: 'category2', text: '카테고리-2'},
+        {value: 'category3', text: '카테고리-3'},
+        {value: 'category4', text: '카테고리-4'},
+        {value: 'category5', text: '카테고리-5'},
+      ],
+
+      // Form 데이터
+      bloger: {
+        name: '',
+        kakaoId: '',
+        age: '',
+        blogNm: '',
+        link: '',
+        email: '',
+        phone: '',
+        address: '',
+        visit: '',
+        postNum: '',
+        important: '',
+        category: '',
+        remark: '',
+      },
+
+      submitted: false,
+      // 리뷰어 폼 모달 상태
+      openReviewerForm: false,
     };
   },
   computed: {
@@ -122,12 +220,65 @@ export default {
     }
   },
   methods: {
+    ...reviewerMethods,
+
     moveSignupForm(row) {
       console.log(row.item);
       this.$router.push({
         name: 'signupForm',
         params: row.item
       })
+    },
+
+    // eslint-disable-next-line no-unused-vars
+    handleSubmit(e) {
+      this.submitted = true;
+
+      // stop here if form is invalid
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return;
+      } else {
+        const name = this.customers.name;
+        const balance = this.customers.balance;
+        const email = this.customers.email;
+        const phone = this.customers.phone;
+        const date = this.customers.date;
+        this.customersData.push({
+          name,
+          email,
+          balance,
+          phone,
+          date
+        });
+        this.showmodal = false;
+      }
+      this.submitted = false;
+      this.customers = {};
+    },
+
+    // eslint-disable-next-line no-unused-vars
+    hideModal(e) {
+      this.submitted = false;
+      this.showmodal = false;
+      this.contacts = {};
+    },
+
+    // 블로거 등록
+    createBloger() {
+      const param = this.bloger
+      console.log(this)
+      
+      if(!param.name) {
+        Vue.swal("성함을 입력해 주세요.").then(() => { return });
+      } else if(!param.important) {
+        Vue.swal("중요도를 선택해 주세요.").then(() => { return });
+      } else if(!param.category) {
+        Vue.swal("카테고리를 선택해 주세요.").then(() => { return });
+      } else {
+        this.CREATE_BLOGER(param)
+      }
+
     }
   }
 };

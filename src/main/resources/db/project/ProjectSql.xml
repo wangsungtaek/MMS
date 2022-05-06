@@ -17,6 +17,16 @@
         AND project_nm LIKE '%' || '${searchText}' || '%'
     </select>
 
+    <!-- 프로젝트 상세 조회  -->
+    <select id="findProject" resultMap="resultMap" parameterMap="parameterMap">
+        SELECT *
+        FROM PROJECT
+        WHERE 1 = 1
+        <if test="project_id != null and project_id != ''">
+        AND project_id = '${project_id}'
+        </if>
+    </select>
+
     <insert id="createProject" parameterMap="parameterMap">
         INSERT INTO PROJECT (
               PROJECT_NM
