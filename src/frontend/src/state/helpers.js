@@ -23,6 +23,12 @@ export const projectComputed = {
   })
 }
 
+export const reviewerComputed = {
+  ...mapState('reviewer', {
+    blogerList: (state) => state.blogerList
+  })
+}
+
 export const authMethods = mapActions('auth', ['logIn', 'logOut', 'register', 'resetPassword'])
 
 export const layoutMethods = mapActions('layout', ['changeLayoutType', 'changeLayoutWidth', 'changeLeftSidebarType', 'changeTopbar', 'changeLoaderValue'])
@@ -32,4 +38,4 @@ export const authFackMethods = mapActions('authfack', ['login', 'registeruser', 
 export const notificationMethods = mapActions('notification', ['success', 'error', 'clear'])
 
 export const projectMethods = mapActions('project', ['FETCH_PROJECT', 'CREATE_PROJECT'])
-export const reviewerMethods = mapActions('reviewer', ['CREATE_BLOGER'])
+export const reviewerMethods = mapActions('reviewer', ['FATCH_BLOGER', 'CREATE_BLOGER', 'UPDATE_BLOGER', 'DELETE_BLOGER'])

@@ -16,10 +16,29 @@ public class ReviewerController {
     @Resource(name = "reviewerService")
     ReviewerService reviewerService;
 
-    // 리뷰어 등록
+    // 블로거 조회
+    @GetMapping("/bloger")
+    public List<Map<String, Object>> findBloger(
+            @RequestBody(required = false) Map<String, Object> param
+    ) throws Exception {
+        return reviewerService.findBloger(param);
+    }
+
+    // 블로거 등록
     @PostMapping("/bloger")
     public boolean createBloger(@RequestBody Map<String, Object> param) throws Exception {
-
         return reviewerService.createBloger(param);
+    }
+
+    // 블로거 수정
+    @PatchMapping("/bloger")
+    public boolean updateBloger(@RequestBody Map<String, Object> param) throws Exception {
+        return reviewerService.updateBloger(param);
+    }
+
+    // 블로거 삭제
+    @PostMapping("/deleteBloger")
+    public boolean deleteBloger(@RequestBody Map<String, Object> param) throws Exception {
+        return reviewerService.deleteBloger(param);
     }
 }

@@ -1,8 +1,29 @@
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 
 <mapper namespace="reviewer">
-    <parameterMap id="parameterMap" type="java.util.HashMap" />
-    <resultMap id="resultMap" type="java.util.HashMap" />
+    <parameterMap id="parameterMap" type="com.mms.common.system.data.CamelDataHashMap" />
+    <resultMap id="resultMap" type="com.mms.common.system.data.CamelDataHashMap" />
+
+    <!-- 블로거 조회  -->
+    <select id="findBloger" resultMap="resultMap" parameterMap="parameterMap">
+        SELECT  REVIEWER_ID
+                ,REVIEWER_NM
+                ,KAKAO_ID
+                ,AGE
+                ,CATEGORY
+                ,BLOG_NM
+                ,BLOG_LINK
+                ,EMAIL
+                ,ADDRESS
+                ,TEL_NO
+                ,VISIT
+                ,POST_NO
+                ,IMPORTANT
+                ,REMARK
+          FROM  REVIEWER
+         WHERE  REVIEWER_DIV = 'blog'
+        ORDER BY CREATE_DT DESC
+    </select>
 
     <!-- 블로거 등록 -->
     <insert id="createBloger" parameterMap="parameterMap">
@@ -24,7 +45,7 @@
             ,REMARK
             ,CREATE_DT
         ) VALUES (
-            #{name}
+            #{reviewerNm}
             ,#{division}
             ,#{kakaoId}
             ,#{age}
@@ -34,14 +55,38 @@
             ,#{blogLink}
             ,#{email}
             ,#{important}
-            ,#{phone}
+            ,#{telNo}
             ,#{address}
-            ,#{postNum}
+            ,#{postNo}
             ,#{visit}
             ,#{remark}
             ,NOW()
         )
     </insert>
 
+    <!-- 블로거 업데이트 -->
+    <update id="updateBloger" parameterMap="parameterMap">
+        UPDATE REVIEWER
+        SET REVIEWER_NM = #{reviewerNm}
+            ,KAKAO_ID = #{kakaoId}
+            ,AGE = #{age}
+            ,CATEGORY = #{category}
+            ,BLOG_NM = #{blogNm}
+            ,BLOG_LINK = #{blogLink}
+            ,EMAIL = #{email}
+            ,IMPORTANT = #{important}
+            ,TEL_NO = #{telNo}
+            ,ADDRESS = #{address}
+            ,POST_NO = #{postNo}
+            ,VISIT = #{visit}
+            ,REMARK = #{remark}
+            ,UPDATA_DT = NOW()
+        WHERE 	REVIEWER_ID = #{reviewerId}
+    </update>
 
+    <!-- 블로거 삭제 -->
+    <delete id="deleteBloger" parameterMap="parameterMap">
+        DELETE FROM REVIEWER
+        WHERE REVIEWER_ID = #{reviewerId}
+    </delete>
 </mapper>

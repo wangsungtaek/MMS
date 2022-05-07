@@ -6,6 +6,7 @@
     v-if="type == 'text' || type == 'number' || type == 'email'"
     class="form-control"
     v-model="value"
+    :disabled="disable"
     :type="type"
     :placeholder="title"/>
 
@@ -14,6 +15,7 @@
     v-if="type == 'textarea'"
     class="form-control"
     v-model="value"
+    :disabled="disable"
     rows="3"
     :placeholder="title"/>
 
@@ -21,6 +23,7 @@
   <b-form-select 
     v-if="type == 'select'"
     v-model="value"
+    :disabled="disable"
     :options="items" />
 
 </div>
@@ -40,6 +43,10 @@ export default {
     items: {
       type: Array,
       default: null
+    },
+    disable: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {

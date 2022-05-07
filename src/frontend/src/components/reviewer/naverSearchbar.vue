@@ -5,32 +5,33 @@
         <div class="card-body align-middle">
           <div class="row">
 
-            <!-- 성별 -->
+            <!-- 중요도 -->
             <div class="col-lg-1 my-auto text-right">
-              <label for="" class="m-0">성별</label>
+              <label for="" class="m-0">중요도</label>
             </div>
-            <div class="col-lg-2 genderBox">
+            <div class="col-lg-1">
               <b-form-select v-model="genderData" :options="gender"></b-form-select>
             </div>
 
-            <!-- 연령대 -->
+            <!-- 카테고리 -->
             <div class="col-lg-1 my-auto text-right">
-              <label for="" class="m-0">연령대</label>
+              <label for="" class="m-0">카테고리</label>
             </div>
-            <div class="col-lg-2 ageBox">
+            <div class="col-lg-1">
               <b-form-select v-model="age" :options="ageList"></b-form-select>
             </div>
 
+            <div class="col-lg-3"></div>
 
             <!-- 검색 조건 -->
-            <div class="col-lg-2">
+            <div class="col-lg-1">
               <b-form-select v-model="selected" :options="options"></b-form-select>
             </div>
-            <div class="col-lg-2 searchBox">
+            <div class="col-lg-3">
               <b-form-input v-model="searchText" placeholder="검색어를 입력하세요."></b-form-input>
             </div>
 
-            <div class="col-lg-2">
+            <div class="col-lg-1">
               <b-button variant="primary" id="searchBtn">
                 <i class="fas fa-search align-middle mr-2"></i>
                 검색
@@ -56,9 +57,9 @@ export default {
       ageList: [ '10 ~ 19', '20 ~ 29', '30 ~ 39', '40 ~ 49', '50 ~ 59' ],
 
       // 검색조건
-      selected: '아이디',
+      selected: '이름',
       searchText: '',
-      options: [ '아이디', '닉네임', '메모'],
+      options: [ '이름', '주소' ],
 
     };
   },
