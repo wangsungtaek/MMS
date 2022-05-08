@@ -29,6 +29,13 @@ export const reviewerComputed = {
   })
 }
 
+export const categoryComputed = {
+  ...mapState('comCode', {
+    categoryList: (state) => state.categoryList,
+    categoryCombo: (state) => state.categoryCombo
+  })
+}
+
 export const authMethods = mapActions('auth', ['logIn', 'logOut', 'register', 'resetPassword'])
 
 export const layoutMethods = mapActions('layout', ['changeLayoutType', 'changeLayoutWidth', 'changeLeftSidebarType', 'changeTopbar', 'changeLoaderValue'])
@@ -39,3 +46,4 @@ export const notificationMethods = mapActions('notification', ['success', 'error
 
 export const projectMethods = mapActions('project', ['FETCH_PROJECT', 'CREATE_PROJECT'])
 export const reviewerMethods = mapActions('reviewer', ['FATCH_BLOGER', 'CREATE_BLOGER', 'UPDATE_BLOGER', 'DELETE_BLOGER'])
+export const categoryMethods = mapActions('comCode', ['FATCH_CATEGORY', 'CREATE_CATEGORY', 'DELETE_CATEGORY'])

@@ -18,7 +18,7 @@ export const mutations = {
 
 export const actions = {
   async FATCH_BLOGER({ commit }, param) {
-    const response = await axios.get('/api/bloger', param)
+    const response = await axios.post('/api/findBloger', param)
     commit("SET_BLOGER_LIST", response.data)
     return response.data
   },

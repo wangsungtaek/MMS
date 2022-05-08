@@ -18,9 +18,9 @@ export default {
 
 <template>
   <!-- start page title -->
-  <div class="row">
+  <div class="row pb-0">
     <div class="col-12">
-      <div class="page-title-box d-flex align-items-center justify-content-between">
+      <div class="page-title-box d-flex align-items-center justify-content-between pb-2">
         <h4 class="mb-0">{{ title }}</h4>
 
         <div class="page-title-right">

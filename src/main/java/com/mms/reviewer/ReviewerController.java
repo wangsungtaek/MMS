@@ -17,7 +17,7 @@ public class ReviewerController {
     ReviewerService reviewerService;
 
     // 블로거 조회
-    @GetMapping("/bloger")
+    @PostMapping("/findBloger")
     public List<Map<String, Object>> findBloger(
             @RequestBody(required = false) Map<String, Object> param
     ) throws Exception {

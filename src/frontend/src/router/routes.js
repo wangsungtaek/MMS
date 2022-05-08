@@ -157,4 +157,11 @@ export default [
         component: () => import('../views/pages/search/searchNaver')
     },
 
+    {
+        path: '/setting/category',
+        name: 'Setting-category',
+        meta: { authRequired: true },
+        component: () => import('../views/pages/setting/category')
+    },
+
 ]

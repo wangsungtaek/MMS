@@ -26,9 +26,11 @@
             <!-- 중요도 확인 -->
             <template v-slot:cell(important)="row">
               <div class="badge font-size-12 text-center"
-                :class="{'badge-soft-danger': `${row.value}` === '0',
+                :class="{'badge-soft-secondary': `${row.value}` === '0',
                     'badge-soft-success': `${row.value}` === '1',
-                    'badge-soft-warning': `${row.value}` === '2'}"
+                    'badge-soft-info': `${row.value}` === '2',
+                    'badge-soft-danger': `${row.value}` === '3',
+                    'badge-soft-primary': `${row.value}` === '4'}"
               >{{row.value}}</div>
             </template>
 
@@ -116,11 +118,11 @@
 </b-modal>
 
 </div>
-</template>
+</template>np
 <script>
 import ComInput from '../common/ComInput'
 import Swal from "sweetalert2";
-import { reviewerComputed, reviewerMethods } from '@/state/helpers'
+import { reviewerComputed, reviewerMethods, categoryComputed, categoryMethods } from '@/state/helpers'
 
 export default {
   components: {
@@ -144,7 +146,7 @@ export default {
 
       totalRows: 1,
       currentPage: 1,
-      perPage: 10,
+      perPage: 8,
       sortBy: "no",
       sortDesc: false,
 
@@ -156,19 +158,18 @@ export default {
         {value: '2', text: '중요도-2'},
         {value: '3', text: '중요도-3'},
         {value: '4', text: '중요도-4'},
-        {value: '5', text: '중요도-5'},
       ],
 
       // 카테고리 콤보
-      categoryCombo: [
-        {value: '', text: '* 카테고리 선택'},
-        {value: 'category0', text: '카테고리-0'},
-        {value: 'category1', text: '카테고리-1'},
-        {value: 'category2', text: '카테고리-2'},
-        {value: 'category3', text: '카테고리-3'},
-        {value: 'category4', text: '카테고리-4'},
-        {value: 'category5', text: '카테고리-5'},
-      ],
+      // categoryCombo: [
+      //   {value: '', text: '* 카테고리 선택'},
+      //   {value: 'category0', text: '카테고리-0'},
+      //   {value: 'category1', text: '카테고리-1'},
+      //   {value: 'category2', text: '카테고리-2'},
+      //   {value: 'category3', text: '카테고리-3'},
+      //   {value: 'category4', text: '카테고리-4'},
+      //   {value: 'category5', text: '카테고리-5'},
+      // ],
 
       // Form 데이터
       bloger: {
@@ -195,18 +196,22 @@ export default {
   },
   computed: {
     ...reviewerComputed,
+    ...categoryComputed,
+
     title() {
       return this.isUpdate ? '블로거 수정' : '블로거 등록'
     },
     rows() {
-      return this.bloger.length;
+      return this.blogerList.length;
     }
   },
   created() {
     this.FATCH_BLOGER();
+    this.FATCH_CATEGORY();
   },
   methods: {
     ...reviewerMethods,
+    ...categoryMethods,
 
     // Form 초기화
     initForm() {

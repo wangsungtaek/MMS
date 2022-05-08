@@ -10,7 +10,7 @@
                 ,REVIEWER_NM
                 ,KAKAO_ID
                 ,AGE
-                ,CATEGORY
+                ,CATEGORY_ID AS CATEGORY
                 ,BLOG_NM
                 ,BLOG_LINK
                 ,EMAIL
@@ -22,6 +22,18 @@
                 ,REMARK
           FROM  REVIEWER
          WHERE  REVIEWER_DIV = 'blog'
+        <if test="important != '' and important != null">
+             AND IMPORTANT = #{important}
+        </if>
+        <if test="category != '' and category != null">
+             AND CATEGORY_ID = #{category}
+        </if>
+        <if test="searchDiv == 'name' and searchWord != '' and searchWord != null">
+            AND REVIEWER_NM LIKE '%'||#{searchWord}||'%'
+        </if>
+        <if test="searchDiv == 'remark' and searchWord != '' and searchWord != null">
+            AND REMARK LIKE '%'||#{searchWord}||'%'
+        </if>
         ORDER BY CREATE_DT DESC
     </select>
 
@@ -33,7 +45,7 @@
             ,KAKAO_ID
             ,AGE
             ,SIGNUP_PATH
-            ,CATEGORY
+            ,CATEGORY_ID
             ,BLOG_NM
             ,BLOG_LINK
             ,EMAIL
@@ -70,7 +82,7 @@
         SET REVIEWER_NM = #{reviewerNm}
             ,KAKAO_ID = #{kakaoId}
             ,AGE = #{age}
-            ,CATEGORY = #{category}
+            ,CATEGORY_ID = #{category}
             ,BLOG_NM = #{blogNm}
             ,BLOG_LINK = #{blogLink}
             ,EMAIL = #{email}
@@ -80,7 +92,7 @@
             ,POST_NO = #{postNo}
             ,VISIT = #{visit}
             ,REMARK = #{remark}
-            ,UPDATA_DT = NOW()
+            ,UPDATE_DT = NOW()
         WHERE 	REVIEWER_ID = #{reviewerId}
     </update>
 
