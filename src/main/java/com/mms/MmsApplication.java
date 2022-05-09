@@ -6,7 +6,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class MmsApplication extends SpringBootServletInitializer {
+public class MmsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MmsApplication.class, args);

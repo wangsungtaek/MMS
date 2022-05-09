@@ -11,6 +11,7 @@ com/mms/reviewer/ReviewerController.class
 com/mms/reviewer/ReviewerDao.class
 com/mms/sample/SampleController.class
 com/mms/sample/SampleDao.class
+com/mms/ServletInitializer.class
 com/mms/comCode/ComCodeService.class
 com/mms/common/MmsDao.class
 com/mms/MmsApplication.class

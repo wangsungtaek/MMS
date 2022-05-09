@@ -1,0 +1,57 @@
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="project">
+    <parameterMap id="parameterMap" type="java.util.HashMap" />
+    <resultMap id="resultMap" type="java.util.HashMap" />
+
+    <!-- 프로젝트 조회  -->
+    <select id="findAllProject" resultMap="resultMap" parameterMap="parameterMap">
+        SELECT *
+        FROM PROJECT
+<!--        WHERE project_id IN (-->
+<!--            SELECT project_id-->
+<!--            FROM USER_PROJECT-->
+<!--            WHERE user_id = 1-->
+<!--        )-->
+        WHERE 1 = 1
+        AND project_nm LIKE '%' || '${searchText}' || '%'
+    </select>
+
+    <!-- 프로젝트 상세 조회  -->
+    <select id="findProject" resultMap="resultMap" parameterMap="parameterMap">
+        SELECT *
+        FROM PROJECT
+        WHERE 1 = 1
+        <if test="project_id != null and project_id != ''">
+        AND project_id = '${project_id}'
+        </if>
+    </select>
+
+    <insert id="createProject" parameterMap="parameterMap">
+        INSERT INTO PROJECT (
+              PROJECT_NM
+            , STATE
+            , START_DT
+            , END_DT
+            , PERSONNEL
+            , MEMO
+            , IMG_PATH
+            , LINK
+            , DETAIL_INFO
+            , CREATE_DT
+        ) VALUES (
+              '${PROJECT_NM}'
+            , '${STATE}'
+            , PARSEDATETIME('${START_DT}', 'yyyy-mm-dd')
+            , PARSEDATETIME('${END_DT}', 'yyyy-mm-dd')
+            , ${PERSONNEL}
+            , '${MEMO}'
+            , '${IMG_PATH}'
+            , '${LINK}'
+            , '${DETAIL_INFO}'
+            , NOW()
+        )
+    </insert>
+
+
+</mapper>
