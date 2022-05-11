@@ -1,6 +1,5 @@
 package com.mms.comCode;
 
-import com.mms.reviewer.ReviewerDao;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

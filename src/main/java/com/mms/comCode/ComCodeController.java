@@ -1,6 +1,5 @@
 package com.mms.comCode;
 
-import com.mms.reviewer.ReviewerService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,9 +14,11 @@ public class ComCodeController {
     ComCodeService comCodeService;
 
     // 카테고리 조회
-    @PostMapping("/findCategory")
+    @PostMapping(value = "/findCategory")
     public List<Map<String, Object>> findCategory(@RequestBody(required = false) Map<String, Object> param) throws Exception {
-        return comCodeService.findCategory(param);
+        List<Map<String, Object>> category = comCodeService.findCategory(param);
+        System.out.println("category = " + category);
+        return category;
     }
 
     // 카테고리 등록

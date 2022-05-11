@@ -12,7 +12,9 @@ public class ComCodeDao extends MmsDao {
 
     // 카테고리 조회
     public List<Map<String, Object>> findCategory(Map<String, Object> param) throws Exception {
-        return super.selectListInfo("comCode.findCategory", param);
+        List<Map<String, Object>> maps = super.selectListInfo("comCode.findCategory", param);
+        System.out.println("maps = " + maps);
+        return maps;
     }
 
     // 카테고리 생성

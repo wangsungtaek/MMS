@@ -3,7 +3,6 @@
 /Users/wangsungtaek/Desktop/mms/src/main/java/com/mms/comCode/ComCodeController.java
 /Users/wangsungtaek/Desktop/mms/src/main/java/com/mms/reviewer/ReviewerController.java
 /Users/wangsungtaek/Desktop/mms/src/main/java/com/mms/reviewer/ReviewerDao.java
-/Users/wangsungtaek/Desktop/mms/src/main/java/com/mms/ServletInitializer.java
 /Users/wangsungtaek/Desktop/mms/src/main/java/com/mms/project/ProjectService.java
 /Users/wangsungtaek/Desktop/mms/src/main/java/com/mms/common/config/DataSourceConfig.java
 /Users/wangsungtaek/Desktop/mms/src/main/java/com/mms/common/CommonDaoSupport.java
@@ -13,7 +12,7 @@
 /Users/wangsungtaek/Desktop/mms/src/main/java/com/mms/common/MmsDao.java
 /Users/wangsungtaek/Desktop/mms/src/main/java/com/mms/sample/SampleController.java
 /Users/wangsungtaek/Desktop/mms/src/main/java/com/mms/comCode/ComCodeDao.java
-/Users/wangsungtaek/Desktop/mms/src/main/java/com/mms/DefaultController.java
 /Users/wangsungtaek/Desktop/mms/src/main/java/com/mms/sample/SampleDao.java
+/Users/wangsungtaek/Desktop/mms/src/main/java/com/mms/HelloController.java
 /Users/wangsungtaek/Desktop/mms/src/main/java/com/mms/reviewer/ReviewerService.java
 /Users/wangsungtaek/Desktop/mms/src/main/java/com/mms/MmsApplication.java

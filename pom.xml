@@ -9,12 +9,12 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mms</groupId>
-	<artifactId>mms</artifactId>
+	<artifactId>ROOT</artifactId>
 	<packaging>war</packaging>
 	<name>mms</name>
 	<description>Marketing Managerment System</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 		<node.version>v10.16.3</node.version>
 		<npm.version>6.9.0</npm.version>
 	</properties>
