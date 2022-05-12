@@ -160,17 +160,6 @@ export default {
         {value: '4', text: '중요도-4'},
       ],
 
-      // 카테고리 콤보
-      // categoryCombo: [
-      //   {value: '', text: '* 카테고리 선택'},
-      //   {value: 'category0', text: '카테고리-0'},
-      //   {value: 'category1', text: '카테고리-1'},
-      //   {value: 'category2', text: '카테고리-2'},
-      //   {value: 'category3', text: '카테고리-3'},
-      //   {value: 'category4', text: '카테고리-4'},
-      //   {value: 'category5', text: '카테고리-5'},
-      // ],
-
       // Form 데이터
       bloger: {
         reviewerId: '',
@@ -239,8 +228,9 @@ export default {
         Swal.fire("중요도를 선택해 주세요.", "", "warning").then(() => { return false });
       } else if(!param.category) {
         Swal.fire("카테고리를 선택해 주세요.", "", "warning").then(() => { return false });
+      } else {
+        return true
       }
-      return true
     },
 
     // Form Open

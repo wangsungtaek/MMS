@@ -17,7 +17,6 @@ public class ComCodeController {
     @PostMapping(value = "/findCategory")
     public List<Map<String, Object>> findCategory(@RequestBody(required = false) Map<String, Object> param) throws Exception {
         List<Map<String, Object>> category = comCodeService.findCategory(param);
-        System.out.println("category = " + category);
         return category;
     }
 

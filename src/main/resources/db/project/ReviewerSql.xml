@@ -29,10 +29,10 @@
              AND CATEGORY_ID = #{category}
         </if>
         <if test="searchDiv == 'name' and searchWord != '' and searchWord != null">
-            AND REVIEWER_NM LIKE '%'||#{searchWord}||'%'
+            AND REVIEWER_NM LIKE CONCAT('%',#{searchWord},'%')
         </if>
         <if test="searchDiv == 'remark' and searchWord != '' and searchWord != null">
-            AND REMARK LIKE '%'||#{searchWord}||'%'
+            AND REMARK LIKE CONCAT('%',#{searchWord},'%')
         </if>
         ORDER BY CREATE_DT DESC
     </select>
