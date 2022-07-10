@@ -32,16 +32,16 @@ export const menuItems = [
         label: '리뷰어',
         icon: 'ri-user-fill',
         subItems: [
-            // {
-            //     id: 7,
-            //     label: '리뷰어 통합 검색',
-            //     link: '/reviewer/all'
-            // },
             {
-                id: 8,
-                label: '리뷰어 - 네이버',
-                link: '/reviewer/naver'
+                id: 7,
+                label: '리뷰어',
+                link: '/reviewer/all'
             },
+            // {
+            //     id: 8,
+            //     label: '리뷰어 - 네이버',
+            //     link: '/reviewer/naver'
+            // },
             // {
             //     id: 9,
             //     label: '리뷰어 - 인스타그램',

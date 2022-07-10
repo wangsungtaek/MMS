@@ -2,30 +2,39 @@
 <div class="form-group">
 
   <!-- input -->
-  <input 
-    v-if="type == 'text' || type == 'number' || type == 'email'"
-    class="form-control"
-    v-model="value"
-    :disabled="disable"
-    :type="type"
-    :placeholder="title"/>
+  <div class="row align-items-center">
+    <div class="col-lg-4 text-right" v-if="isGridSystem">
+      <label class="m-0">{{ title }} :</label>
+    </div>
+    <div :class="`col-lg-${isGridSystem? 8 : 12}`">
+    <input 
+      v-if="type == 'text' || type == 'number' || type == 'email'"
+      class="form-control"
+      v-model="value"
+      :disabled="disable"
+      :type="type"
+      :placeholder="title"
+    />
 
-  <!-- textarea -->
-  <textarea
-    v-if="type == 'textarea'"
-    class="form-control"
-    v-model="value"
-    :disabled="disable"
-    rows="3"
-    :placeholder="title"/>
+    <!-- textarea -->
+    <textarea
+      v-if="type == 'textarea'"
+      class="form-control"
+      v-model="value"
+      :disabled="disable"
+      rows="3"
+      :placeholder="title"
+    />
 
-  <!-- select -->
-  <b-form-select 
-    v-if="type == 'select'"
-    v-model="value"
-    :disabled="disable"
-    :options="items" />
-
+    <!-- select -->
+    <b-form-select 
+      v-if="type == 'select'"
+      v-model="value"
+      :disabled="disable"
+      :options="items"
+    />
+    </div>
+  </div>
 </div>
 </template>
 
@@ -45,6 +54,10 @@ export default {
       default: null
     },
     disable: {
+      type: Boolean,
+      default: false
+    },
+    isGridSystem: {
       type: Boolean,
       default: false
     }

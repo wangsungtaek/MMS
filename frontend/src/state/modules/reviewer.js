@@ -17,23 +17,23 @@ export const mutations = {
 };
 
 export const actions = {
-  async FATCH_BLOGER({ commit }, param) {
+  async FATCH_REVIEWER({ commit }, param) {
     const response = await axios.post('/api/findBloger', param)
     commit("SET_BLOGER_LIST", response.data)
     return response.data
   },
   // eslint-disable-next-line no-unused-vars
-  async CREATE_BLOGER({ commit }, param) {
+  async CREATE_REVIEWER({ commit }, param) {
     const response = await axios.post('/api/bloger', param)
     return response.data    
   },
   // eslint-disable-next-line no-unused-vars
-  async UPDATE_BLOGER({ commit }, param) {
+  async UPDATE_REVIEWER({ commit }, param) {
     const response = await axios.patch('/api/bloger', param)
     return response.data    
   },
   // eslint-disable-next-line no-unused-vars
-  async DELETE_BLOGER({ commit }, param) {
+  async DELETE_REVIEWER({ commit }, param) {
     const response = await axios.post('/api/deleteBloger', param)
     return response.data    
   },

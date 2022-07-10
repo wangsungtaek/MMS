@@ -1,45 +1,40 @@
 <template>
   <Layout>
-    <PageHeader :title="title" :items="items" />
-    <allSearchbar/>
+    <PageHeader :title="title" :items="items" class="pb-0" />
+    <!-- searchBar -->
+    <reviewerSearchbar/>
 
-    <!-- alert -->
-    <b-alert show variant="secondary text-center">
-      <i class="mdi mdi-14px mdi-alert-octagon"></i>
-      프로젝트에 신청한 모든 리뷰어를 최신 활동순으로 검색할 수 있습니다.
-    </b-alert>
-
-    <allDataList/>
+    <!-- dataList -->
+    <reviewerList/>
   </Layout>
 </template>
-<script>
 
+<script>
 import Layout from "../../layouts/main";
 import PageHeader from "@/components/page-header";
-import allSearchbar from '../../../components/reviewer/allSearchbar.vue';
-import allDataList from '../../../components/reviewer/allDataList.vue';
-
+import reviewerSearchbar from '../../../components/reviewer/reviewerSearchbar.vue';
+import reviewerList from '../../../components/reviewer/reviewerList.vue';
 
 export default {
   page: {
-    meta: [{ name: "reviewer all" }]
+    meta: [{ name: "reviewer" }]
   },
   components: { 
     Layout,
     PageHeader,
-    allSearchbar,
-    allDataList
-     },
+    reviewerSearchbar,
+    reviewerList
+  },
   data() {
     return {
-      title: "리뷰어 통합 검색",
+      title: "리뷰어 목록",
       items: [
         {
           text: "리뷰어",
           href: "/reviewer/all"
         },
         {
-          text: "리뷰어 통합 검색",
+          text: "목록",
           active: true
         }
       ]

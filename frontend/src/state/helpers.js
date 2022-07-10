@@ -45,5 +45,5 @@ export const authFackMethods = mapActions('authfack', ['login', 'registeruser', 
 export const notificationMethods = mapActions('notification', ['success', 'error', 'clear'])
 
 export const projectMethods = mapActions('project', ['FETCH_PROJECT', 'CREATE_PROJECT'])
-export const reviewerMethods = mapActions('reviewer', ['FATCH_BLOGER', 'CREATE_BLOGER', 'UPDATE_BLOGER', 'DELETE_BLOGER'])
+export const reviewerMethods = mapActions('reviewer', ['FATCH_REVIEWER', 'CREATE_REVIEWER', 'UPDATE_REVIEWER', 'DELETE_REVIEWER'])
 export const categoryMethods = mapActions('comCode', ['FATCH_CATEGORY', 'CREATE_CATEGORY', 'DELETE_CATEGORY'])

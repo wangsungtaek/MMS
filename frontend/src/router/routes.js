@@ -110,36 +110,13 @@ export default [
     /**
      * Reviewer
      */
-    // {
-    //     path: '/reviewer/all',
-    //     name: 'Reviewer-all',
-    //     meta: { authRequired: true },
-    //     component: () => import('../views/pages/reviewer/reviewerAll')
-    // },
     {
-        path: '/reviewer/facebook',
-        name: 'Reviewer-facebook',
+        path: '/reviewer/all',
+        name: 'Reviewer-all',
         meta: { authRequired: true },
-        component: () => import('../views/pages/reviewer/reviewerFacebook')
+        component: () => import('../views/pages/reviewer/reviewerAll')
     },
-    {
-        path: '/reviewer/instagram',
-        name: 'Reviewer-instagram',
-        meta: { authRequired: true },
-        component: () => import('../views/pages/reviewer/reviewerInstagram')
-    },
-    {
-        path: '/reviewer/naver',
-        name: 'Reviewer-naver',
-        meta: { authRequired: true },
-        component: () => import('../views/pages/reviewer/reviewerNaver')
-    },
-    {
-        path: '/reviewer/youtube',
-        name: 'Reviewer-youtube',
-        meta: { authRequired: true },
-        component: () => import('../views/pages/reviewer/reviewerYoutube')
-    },
+    
 
     /**
      * Search
