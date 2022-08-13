@@ -24,3 +24,4 @@ yarn-error.log*
 *.sw?
 
 dist
+frontend/src/components/project/projectDataList.vue

@@ -63,7 +63,7 @@
 </template>
 <script>
 import { projectComputed, projectMethods } from "@/state/helpers";
-import ComButton from '../common/ComButton.vue';
+import ComButton from '@/components/common/comButton.vue';
 
 
 export default {
